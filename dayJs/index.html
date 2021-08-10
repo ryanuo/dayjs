@@ -7,25 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
+<style>
+</style>
 <body>
+  <li id="top" style="height: 4000px;">返回底部</li>
+  <a href="javascript:;" id="btn">返回顶部</a>
   <script>
-    // 使用递归的方法写一个数组去重的方法(支持多维数组)(js)
-    // 使用递归的方法进行降维
-    let arr = [[1], [2, [23, 231], 31, 2], [2, 22, 3], 12, 1, 23]
-    const arrSet = (arr) => [
-      ...new Set(
-        arr.reduce(
-          (prev, cur) =>
-            Array.isArray(cur) ? prev.concat(arrSet(cur)) : prev.concat(cur),  //concat() 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
-          []
-        )
-      )
-    ].sort((a, b) => {
-      console.log(a,b);
-      return a - b
-    });
-    console.log(arrSet(arr));  //[1, 2, 3, 12, 22, 23, 31, 231]
+    document.querySelector('#btn').addEventListener('click',function(){
+      document.querySelector('#top').scrollIntoView()
+    })
   </script>
 </body>
 
