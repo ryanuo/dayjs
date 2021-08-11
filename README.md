@@ -168,4 +168,4 @@
 29. [译文: Vue3 Composition API 是如何取代 Vue Mixins 的?](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650078468&idx=1&sn=37cf9e0540d880ee220de8d802d67744&scene=19#wechat_redirect)
 30. [扶我起来, 我还能学: 迎接 Vue 3.0](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650078464&idx=1&sn=69238fa2bc277019fc4e9e27c06054c7&scene=19#wechat_redirect)
 
-> [来源](https://github.com/kujian/frontendDaily)
+> [以上信息来源地址](https://github.com/kujian/frontendDaily)
