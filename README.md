@@ -9,7 +9,7 @@
 
 01. [从前端性能优化引申出来的5道经典面试题(值得收藏)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081960&idx=1&sn=a65a20fedfe69b95da52ca03df6e9f79&scene=19#wechat_redirect)
 02. [2 年前端 7～9 月面试经历总结](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081562&idx=1&sn=77e839fb2ed1e78b19d8a4367ad68dda&scene=19#wechat_redirect)
-03. [「面试」45 道牛客网 JavaScript 经典题总结(8500字)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081562&idx=2&sn=4280ebf23813d79afd579702aa4d4d75&scene=19#wechat_redirect)
+03. [「面试」45 道牛客网 JavaScript 经典题总结(8500字)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081562&idx=2&sn=4280ebf23813d79afd579702aa4d4d75&scene=19#wechat_redirect) ✔
 04. [前端工程师面试复习思维图, 送福利!](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081451&idx=1&sn=dadb7af7ae510279357ca3b4928c6e4f&scene=19#wechat_redirect)
 05. [由浅入深, 66条JavaScript面试知识点](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081252&idx=1&sn=1fedc422a3806fa1f9c3faf31bb2a20b&scene=19#wechat_redirect)
 06. [手撕 32 个面试高频知识, 轻松应对编程题](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650081052&idx=1&sn=1cb5cd685907d03112205529477935cf&scene=19#wechat_redirect)
