@@ -1,0 +1,60 @@
+// 使用变量,可以在变量中使用变量
+$primary-color:#1269b5;
+
+p {
+  width: 20px;
+  color: $primary-color;
+}
+
+// 使用嵌入式,使用&符号 连接伪元素
+
+.nav {
+  ul {
+    li {
+      color: $primary-color;
+    }
+
+    a {
+      text-align: center;
+
+      &:hover {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// 属性的嵌套 前缀有-可以使用  前缀名：{}
+body {
+  font: { 
+    size: 20px;
+    weight: normal;
+    family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+}
+
+// mixin
+
+@mixin alert($text-color,$background) {
+  color: $text-color;
+  background-color: $background;
+  a {
+    color: $primary-color;
+    background-color: darken($text-color,10%);
+  }
+}
+
+.alert-warning {
+  @include alert(#1269b5,#fff);
+}
+
+// 继承
+
+a{
+  text-decoration: none;
+  color: $primary-color;
+}
+
+.info{
+  @extend a;
+}
