@@ -1,3 +1,7 @@
+## 预览软件
+
+![软件预览]](https://gitee.com/rbozo/picgo_image/raw/master/image/0/20210826000245.png)
+
 ## 仓库简介
 
 * 该软件开发主要是用于前端知识的学习. 方便切换题目, 本地记录学习天数
