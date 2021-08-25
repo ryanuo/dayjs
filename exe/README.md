@@ -1,6 +1,6 @@
 ## 预览软件
 
-![软件预览]](https://gitee.com/rbozo/picgo_image/raw/master/image/0/20210826000245.png)
+![软件预览](https://gitee.com/rbozo/picgo_image/raw/master/image/0/20210826000245.png)
 
 ## 仓库简介
 
