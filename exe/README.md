@@ -11,7 +11,8 @@
 
 * 使用`python+tkinter`
 * `exe`打包工具为`pyinstaller`
-* `pyinstaller -F -w -i day_favicon.ico tit.py`
+* `pip install -r requirements.txt`  安装依赖
+* `pyinstaller -F -w -i day_favicon.ico tit.py`  生成exe文件
 
 ## 更新日志
 
