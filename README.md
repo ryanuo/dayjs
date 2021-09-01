@@ -102,6 +102,7 @@
 19. [CSS 计算属性 calc()的完整指南(下)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650079026&idx=1&sn=315852f5ddc19a6c03775d2fab58b361&scene=19#wechat_redirect)
 20. [那些不常见, 但却非常实用的css属性(整理不易)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650078915&idx=2&sn=725d25840de79ace1b89d0da23a5b5ee&scene=19#wechat_redirect)
 21. [CSS 中calc()的完整指南(一)](http://mp.weixin.qq.com/s?__biz=MzAxODE4MTEzMA==&mid=2650078535&idx=1&sn=35c7bc72146e7b63080b070846b08ce6&scene=19#wechat_redirect)
+22. [49 个常用 CSS 样式清单整理](https://mp.weixin.qq.com/s/rdt0VS6-I5XI1gEFh2Zs9g) ✔
 
 ## Vue3 精选文章
 
