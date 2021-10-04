@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个Ajax请求-promise</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+  function ajax(type, params) {
+    let { url, data } = params
+    return new Promise((reslove, reject) => {
+      let xhr = new XMLHttpRequest()
+      if (type === 'get') {
+        data = null
+        xhr.open('get', url)
+      } else if (type === 'post') {
+        xhr.open('post', url, true)
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.setRequestHeader('Content-Type', 'application/json')
+      }
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4) {
+          if (this.status === 200) {
+            reslove(this.responseText)
+          } else {
+            reject('请求信息有误')
+          }
+        }
+      }
+      xhr.send(JSON.stringify(data))
+    })
+  }
+
+  ajax('get', {
+    url: 'http://localhost:3000/user'
+  }).then(res => {
+    console.log(res);
+  }).catch(res => {
+    console.log(res);
+  })
+  // ajax('post', {
+  //   url: 'http://localhost:3000/user',
+  //   data: {
+  //     username: 'zs',
+  //     age: 20
+  //   }
+  // }).then(res => {
+  //   // console.log(res);
+  // }).catch(res => {
+  //   console.log(res);
+  // })
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个Jsonp，解决跨域问题</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // url为请求的网址，data为url携带的参数
+  let jsonp = function (url, data = {}, callback) {
+    // 转化data为url字符串形式，例{a: 1, b: c} => a=1&b=c&
+    // indexOf未检查到？则返回-1
+    let str = url.indexOf('?') === -1 ? '?' : '&'
+    if (data !== {}) {
+      for (let key in data) {
+        str += `${key}=${data[key]}&` // es6的模板字符串
+      }
+    }
+    // callback参数，指定回调函数的名字 
+    let n = 'jsonp_' + Math.random().toString().replace('.', '').substr(1, 6)
+    str += 'callback=' + n
+    // 创建script标签并添加src属性
+    let s = document.createElement('script')
+    s.src = url + str // 将参数添加到url上
+    // 回调挂载在全局对象上
+    window[n] = function (datas) {
+      callback(datas)
+      document.body.removeChild(s) // 用完script标签就删除
+    }
+    document.body.appendChild(s)
+  }
+
+  // 测试效果
+  jsonp('http://localhost:3000/user?username=zs&age=20',
+    { email: "123" },
+    function (datas) {
+      console.log(datas)
+    }
+  )
+
+</script>
+
+</html>
