@@ -1,0 +1,50 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-04 21:20:46
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 09:01:21
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 实现思路
+    // 1. 创建一个空的对象
+    // 2. 将函数的arguments的值指向到数组的shift方法上 取出第一个数
+    // 3. 判断是不是一个函数
+    // 4. 设置原型 将对象的原型设置为函数的prototye对象
+    // 5. 判断函数的返回值类型，如果是值类型 返回创建的对象，如果是引用类型就返回这个引用类型的对象
+    function _new() {
+      let constuctor = Array.prototype.shift.call(arguments)
+      if (typeof constuctor != 'function') {
+        console.error('type error');
+        return false;
+      }
+      let newObject = Object.create(constuctor.prototype)
+      // let newObject = {}
+      // newObject.__proto__ = constuctor.prototype
+      let result = constuctor.apply(newObject, arguments)
+      console.log(result);
+      let flag = result && (typeof result === 'object' || typeof result === "function")
+      console.log(flag);  
+      return flag ? result : newObject
+    }
+    function fn() {
+      this.a = arguments[0]
+    }
+    console.log(_new(Object, 'zs'));
+  </script>
+</body>
+
+</html>

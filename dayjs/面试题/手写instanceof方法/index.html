@@ -1,0 +1,44 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-04 20:20:29
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-04 21:13:48
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 实现思路：
+    // 1. 首先是获取类型的原型
+    // 2. 然后获取对象的原型
+    // 3. 然后一直循环判断 如果对象的原型等于null的时候 返回false 如果 类型的原型正好等于对象的原型则返回true
+    // 4. 如果不相等则是 在循环的判断 继续向上 查询判断
+    // 手写insyanceof方法
+    // 实例对象有__proto__ 方法有prototype
+    function my_instanceOf(leftValue, rightValue) {
+      let rightPrototype = rightValue.prototype
+      let leftproto = leftValue.__proto__
+      while (true) {
+        if (leftproto == null) return false
+        if (leftproto === rightPrototype) return true
+        leftproto = leftproto.__proto__
+      }
+    }
+
+    console.log(my_instanceOf([], Object));  // true 数组的原型也是对象
+    // 其实 instanceof 主要的实现原理就是只要右边变量的 prototype 在左边变量的原型链上即可。因此，instanceof 在查找的过程中会遍历左边变量的原型链，直到找到右边变量的 prototype，如果查找失败，则会返回 false，告诉我们左边变量并非是右边变量的实例。
+  </script>
+</body>
+
+</html>

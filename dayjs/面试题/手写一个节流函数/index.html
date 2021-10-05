@@ -1,0 +1,41 @@
+<!--
+ * @Description: 手写一个节流函数
+ * @Author: Harry
+ * @Date: 2021-10-05 10:58:12
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 11:01:54
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个节流函数</title>
+</head>
+
+<body>
+  <button id="btn">测试节流</button>
+  <script>
+    function throttle(fn, delay) {
+      let timer;
+      return function () {
+        if (timer) return
+        timer = setTimeout(() => {
+          fn.apply(this, arguments)
+        }, delay);
+      }
+    }
+    function fn() {
+      console.log('测试节流');
+    }
+    document.querySelector('#btn')
+      .addEventListener('click', throttle
+        (fn, 1000))
+  </script>
+</body>
+
+</html>

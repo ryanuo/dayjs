@@ -1,0 +1,58 @@
+<!--
+ * @Description: 手写一个bind函数
+ * @Author: Harry
+ * @Date: 2021-10-05 20:01:20
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 20:54:47
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个bind函数</title>
+</head>
+
+<body>
+  <script>
+    // es5写法
+    // Function.prototype._bind = function () {
+    //   if (typeof this !== "function") {
+    //     throw new TypeError('Error')
+    //   }
+    //   let self = this
+    //   let args = Array.prototype.slice.call(arguments, 1) //取出除第一个参数的所有参数
+    //   return function () {
+    //     return self.apply(self, args)
+    //   }
+    // }
+    // ES6写法
+    Function.prototype._bind = function (...args) {
+      if (typeof this !== "function") {
+        throw new TypeError('Error')
+      }
+      let self = this
+      let context = args.shift()  //shift 方法是将数组中的第一个数删除，然后然后返回删除的数
+      return function (...arg) {
+        console.log(args[0].concat([...arg]));
+        return self.apply(context, args[0].concat([...arg]))
+      }
+    }
+
+    function fn() {
+      this.a = arguments[0]
+      console.log('a:' + this.a);
+      console.log('name:' + this.name);
+    }
+    let obj = {
+      name: 'zs'
+    }
+    console.log(fn._bind(obj, ['apply', '0', '1'])(1, 3));
+  </script>
+</body>
+
+</html>

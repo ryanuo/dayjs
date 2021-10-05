@@ -1,0 +1,50 @@
+<!--
+ * @Description: 手写一个防抖函数
+ * @Author: Harry
+ * @Date: 2021-10-05 09:16:11
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 09:48:52
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>手写一个防抖函数</title>
+</head>
+
+<body>
+  <!-- <button onclick="debounce()">测试防抖</button> -->
+  <button id="btn">测试防抖</button>
+  <script>
+    let btn = document.querySelector('#btn')
+      .addEventListener('click', debounce(fn, 1000))
+    function debounce(fn, wait) {
+      let timer;
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(function () {
+          fn.apply(this, arguments)
+        }, wait)
+      }
+    }
+    function fn() {
+      console.log('测试防抖');
+    }
+    // debounce(fn, 1000)
+    // function noShake() {
+    //   let timer;
+    //   if (timer) {
+    //     clearTimeout(timer)
+    //   }
+    //   timer = setTimeout(() => {
+    //     console.log('防抖测试');
+    //   }, 1500);
+    // }
+  </script>
+</body>
+
+</html>

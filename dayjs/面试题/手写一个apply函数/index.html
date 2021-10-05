@@ -1,0 +1,61 @@
+<!--
+ * @Description: 手写一个apply函数
+ * @Author: Harry
+ * @Date: 2021-10-05 18:52:35
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 19:29:08
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个apply函数</title>
+</head>
+
+<body>
+  <script>
+    // es5写法
+    // 实现思路
+    // 将Function原型上加上一个方法
+    // Function.prototype._apply = function (context) {
+    //   if (typeof this !== "function") {
+    //     console.error('Type error');
+    //   }
+    //   context = context || window
+    //   // 获取传入的参数
+    //   console.log(arguments);
+    //   // 创建一个新的对象
+    //   context.fn = this
+    //   let result = context.fn(...arguments[1])
+    //   delete context.fn
+    //   return result
+    // }
+    Function.prototype._apply = function (context, args) {
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      context = context || window
+      let key = Symbol()
+      context[key] = this
+      let result = context[key](...args)
+      delete context[key]
+      return result
+    }
+    function fn() {
+      this.a = arguments[0]
+      console.log('a:' + this.a);
+      console.log('name:' + this.name);
+    }
+    let obj = {
+      name: 'zs'
+    }
+    fn._apply(obj, ['apply', '0', '1'])
+  </script>
+</body>
+
+</html>
