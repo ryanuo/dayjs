@@ -1,0 +1,59 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-06 19:49:33
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-06 20:04:08
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现深拷贝的方法</title>
+</head>
+
+<body>
+  <script src="./loadsh.js"></script>
+  <script>
+    // 第一种使用JSON.parse(JSON.stringify(obj))
+    // let obj1 = {
+    //   a: 0,
+    //   b: {
+    //     c: 0
+    //   }
+    // };
+    // let obj2 = JSON.parse(JSON.stringify(obj1));
+    // obj1.a = 1;
+    // obj1.b.c = 1;
+    // console.log(obj1); // {a: 1, b: {c: 1}}
+    // console.log(obj2); // {a: 0, b: {c: 0}}
+    // var obj1 = {
+    //   a: 1,
+    //   b: { f: { g: 1 } },
+    //   c: [1, 2, 3]
+    // };
+    // var obj2 = _.cloneDeep(obj1);
+    // console.log(obj1.b.f === obj2.b.f);// false
+    // 手写实现一个深拷贝
+    // 深拷贝的实现
+    function deepCopy(object) {
+      if (!object || typeof object !== "object") return;
+      let newObject = Array.isArray(object) ? [] : {};
+      for (let key in object) {
+        if (object.hasOwnProperty(key)) {
+          newObject[key] =
+            typeof object[key] === "object" ? deepCopy(object[key]) : object[key];
+        }
+      }
+      return newObject;
+    }
+
+  </script>
+</body>
+
+</html>
