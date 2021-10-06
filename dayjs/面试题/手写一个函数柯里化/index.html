@@ -1,0 +1,53 @@
+<!--
+ * @Description: 手写一个函数柯里化
+ * @Author: Harry
+ * @Date: 2021-10-06 10:43:57
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-06 14:23:04
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个函数柯里化</title>
+</head>
+
+<body>
+  <script>
+    // 原理:柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数 
+    function currying() {
+      // 首先先将arguments中的参数指向到一个新的数组中
+      let args = Array.prototype.slice.call(arguments)
+      let res = function () {
+        for (let i of arguments) { args.push(i) }
+        return res
+      }
+      res.toString = function () {
+        return args.reduce((a, b) => a + b, 0)
+      }
+      return res
+    }
+    // function currying(...args) {
+    //   let res = function (...arg) {
+    //     args.push(...arg)
+    //     return res
+    //   }
+    //   res.toString = function () {
+    //     return args.reduce((a, b) => a + b)
+    //   }
+    //   return res
+    // }
+
+    // add(1)(2)(3) = 6;
+    // add(1, 2, 3)(4) = 10;
+    // add(1)(2)(3)(4)(5) = 15;
+    console.log(currying(1, 2, 3)(4).toString());
+  </script>
+</body>
+
+</html>

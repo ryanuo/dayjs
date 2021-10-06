@@ -1,0 +1,42 @@
+<!--
+ * @Description: 手写一个判断类型的方法
+ * @Author: Harry
+ * @Date: 2021-10-05 21:20:07
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-05 21:59:37
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写一个判断类型的方法</title>
+</head>
+
+<body>
+  <script>
+    // 数据类型有8种
+    // Number, String, Boolean, Null, undefined, Object, Symbol, bigInt
+    // 分为两大类基本应用类型，引用数据类型
+    // Object包括 Function Date Array 属于引用数据类型
+    // 基本数据类型 String Boolean Null undefined Number
+    // 五大基本类型存储在栈中 Object 对象在栈里面存储的是地址，地址指向堆中 存储的数据
+    // 先判断是否是基本的引用数据类型,如果不是 则返回 基本数据类型
+    function getType(value) {
+      if (value === null) return value + '';
+      if (typeof value === "object") {
+        let valueClassify = Object.prototype.toString.call(value)
+        return valueClassify.split(' ')[1].replace(']','').toLowerCase()
+      } else {
+        return typeof value
+      }
+    }
+    console.log(getType(function(){}));
+  </script>
+</body>
+
+</html>

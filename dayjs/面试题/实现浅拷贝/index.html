@@ -1,0 +1,51 @@
+<!--
+ * @Description: 实现浅拷贝
+ * @Author: Harry
+ * @Date: 2021-10-06 15:54:29
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-06 16:27:52
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现浅拷贝</title>
+</head>
+
+<body>
+  <script>
+    // Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
+    // let target = { a: 1 }
+    // let object1 = { b: 2 }
+    // let object2 = { c: 3 }
+    // Object.assign(target, object1, object2)
+    // console.log(target);
+    // 使用扩展运算符，当扩展运算符在第一层的时候实现的是深拷贝，多层对象时实现的是浅拷贝
+    // let obj1 = { a: 1, b: { c: 1 } }
+    // let obj2 = { ...obj1 };
+    // obj1.a = 2;
+    // console.log(obj1); //{a:2,b:{c:1}}
+    // console.log(obj2); //{a:1,b:{c:1}}
+    // obj1.b.c = 2;
+    // console.log(obj1); //{a:2,b:{c:2}}
+    // console.log(obj2); //{a:1,b:{c:2}}
+    // 数组方法实现浅拷贝
+    // 如果数组和对象中再包含一层对象，...扩展运算符/slice()/contat()都是对对象部分实现浅拷贝，如果只有一层数组，或者一层对象则实现深拷贝
+    // let arr = [1, 2, 3, 4];
+    // console.log(arr.slice()); // [1,2,3,4]
+    // console.log(arr.slice() === arr); //false
+    let arr = [1, 2, 3, [2], 4];
+    console.log(arr.concat()); // [1,2,3,4]
+    console.log(arr.concat() === arr); //false
+
+
+
+  </script>
+</body>
+
+</html>
