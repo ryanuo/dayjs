@@ -1,0 +1,39 @@
+<!--
+ * @Description: 实现日期的格式化函数
+ * @Author: Harry
+ * @Date: 2021-10-07 07:38:23
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-07 07:58:59
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现日期的格式化函数</title>
+</head>
+
+<body>
+  <script>
+    // dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd') // 2020/12/01
+    // dateFormat(new Date('2020-04-01'), 'yyyy/MM/dd') // 2020/04/01
+    // dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日') // 2020年04月01日
+    function dateFormat(date, format) {
+      let y = date.getFullYear()
+      let m = date.getMonth() + 1
+      let d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate()
+      return format.replace(/yyyy/, y).replace(/MM/, m).replace(/dd/, d)
+    }
+    let res = dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd')
+    let res1 = dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日')
+    console.log(res);// 2020/12/01
+    console.log(res1);// 2020年4月01日
+    // ![](https://cdn.jsdelivr.net/gh/Rr210/image@master/hexo/api/20211007075836.png)
+  </script>
+</body>
+
+</html>

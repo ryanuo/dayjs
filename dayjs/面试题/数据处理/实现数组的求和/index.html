@@ -1,0 +1,43 @@
+<!--
+ * @Description: 实现数组的求和
+ * @Author: Harry
+ * @Date: 2021-10-07 16:22:26
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-07 16:51:34
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现数组的求和</title>
+</head>
+
+<body>
+  <script>
+    // let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    // function sumArr(arr) {
+    //   return arr.reduce((a, b) => a + b)
+    // }
+    // 多维数组
+    // let arr = [1, 2, 3, [[4, 5], 6], 7, 8, 9, 10]
+    // 使用flat函数 将多维数组转化成一维数组 其中flat方法参数 如果为Infinity时 将所有的多维数组都拆分成一维数组
+    // function sumArr(arr) {
+    //   // return arr.flat(Infinity).reduce((a, b) => a + b)
+    //   return arr.toString().split(',').reduce((a, b) => (a - 0) + (b - 0))
+    // }
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    function recursion(arr) {
+      if (arr.length <= 0) return 0;
+      let i = arr.shift()
+      return i + recursion(arr)
+    }
+    console.log(recursion(arr)); // 55
+  </script>
+</body>
+
+</html>

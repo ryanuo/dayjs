@@ -1,0 +1,53 @@
+<!--
+ * @Description: 实现数组的乱序输出
+ * @Author: Harry
+ * @Date: 2021-10-07 09:44:51
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-07 16:13:31
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现数组的乱序输出</title>
+</head>
+
+<body>
+  <script src="../../javascript基础/实现深拷贝的方法/loadsh.js"></script>
+  <script>
+    // 实现思路
+    // function randomArray(arr) {
+    //   // 使用sort方法
+    //   // return arr.sort(() => Math.random() - .5)
+    //   // 使用随机下标法，实现数组的随机排序
+    //   let temp = [...arr];
+    //   let result = [];
+    //   while (temp.length) {
+    //     const index = Math.floor(Math.random() * temp.length);
+    //     result.push(temp.splice(index, 1)[0]);
+    //   }
+    //   return result
+    // }
+    // 使用耶茨洗牌的方式
+    function shuffle(arr) {
+      // 或者使用while循环
+      for (let i = 0; i < arr.length; i++) {
+        // 从后往前遍历
+        let index = Math.floor(Math.random() * (arr.length - i)) + i;
+        // 从前往后
+        // let index = Math.floor(Math.random() * i);
+        [arr[index], arr[i]] = [arr[i], arr[index]]
+      }
+      return arr
+    }
+    console.log(shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    console.log(_.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+  </script>
+</body>
+
+</html>
