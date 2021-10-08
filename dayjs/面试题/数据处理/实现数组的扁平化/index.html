@@ -4,20 +4,63 @@
  * @Date: 2021-10-07 16:56:04
  * @Url: https://u.mr90.top
  * @github: https://github.com/rr210
- * @LastEditTime: 2021-10-07 16:56:05
+ * @LastEditTime: 2021-10-07 20:22:01
  * @LastEditors: Harry
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>实现数组的扁平化</title>
 </head>
+
 <body>
   <script>
     // 将多维数组进行降维处理
+    // 使用es6新方法flat方法
+    let arr = [22, 23, 32, [23, 231, [32, [23], 23], [2]]]
+    // console.log(arr.flat(Infinity));  // 使用 flat方法 设置其参数为Infinity
+    // 使用递归+for循环的方法
+    // function dimensionalityReduction(arr) {
+    //   let result = [];
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (Array.isArray(arr[i])) {
+    //       result = result.concat(dimensionalityReduction(arr[i]));
+    //     } else {
+    //       result.push(arr[i]);
+    //     }
+    //   }
+    //   return result;
+    // }
+    // 使用reduce函数进行迭代处理
+    // function flatten(arr) {
+    //   // 使用reduce高阶函数 实现 多维数组的降维处理
+    //   return arr.reduce((a, b) => {
+    //     return a.concat(typeof b === "object" ? flatten(b) : b)
+    //   }, [])
+    // }
+    // 使用toString方法
+    // function flatten(arr) {
+    //   return arr.toString().split(',').map(x=>Number(x))
+    // }
+    // 使用扩展运算符的方法 还有一个some方法 只要有满足条件的就返回true 继续执行
+    // function flatten(arr) {
+    //   console.log(arr.some(x => typeof x === "object"));
+    //   while (arr.some(x => typeof x === "object")) {
+    //     console.log(...arr);
+    //     arr = [].concat(...arr)
+    //   }
+    //   return arr
+    // }
+    // 使用正则的方式
+    function flatten(arr) {
+      return arr.toString().replace(/[\[\]]*/g, '').split(',').map(x => Number(x))
+    }
+    console.log(flatten(arr));
   </script>
 </body>
+
 </html>

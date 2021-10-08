@@ -1,0 +1,34 @@
+<!--
+ * @Description: 实现一个push方法
+ * @Author: Harry
+ * @Date: 2021-10-08 15:04:11
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 15:12:18
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现一个push方法</title>
+</head>
+
+<body>
+  <script>
+    let arr = []
+    Array.prototype._push = function () {
+      for (let i in arguments) {
+        arr[i] = arguments[i];
+      }
+      return arr.length
+    }
+    console.log(arr._push(1, 2));
+    console.log(arr);
+  </script>
+</body>
+
+</html>

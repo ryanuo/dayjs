@@ -1,0 +1,38 @@
+<!--
+ * @Description: 实现一个filter方法
+ * @Author: Harry
+ * @Date: 2021-10-08 15:10:49
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 15:34:39
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现一个filter方法</title>
+</head>
+
+<body>
+  <script>
+    // 实现一个filter方法
+    let x = [2, 3, 1, 3, 5]
+    Array.prototype._filter = function (fn) {
+      if (typeof fn !== "function") {
+        throw new TypeError('Not Function')
+      }
+      let res = []
+      for (let i of this) {
+        if (fn(i)) res.push(i)
+      }
+      return res
+    }
+    console.log(x._filter(x => x > 2));
+  </script>
+</body>
+
+</html>

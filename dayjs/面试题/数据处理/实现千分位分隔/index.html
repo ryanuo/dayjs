@@ -1,0 +1,48 @@
+<!--
+ * @Description: 用逗号分隔千分位
+ * @Author: Harry
+ * @Date: 2021-10-08 19:51:46
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 20:32:21
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用逗号分隔千分位</title>
+</head>
+
+<body>
+  <script>
+    // 有无小数部分
+    function separate(num) {
+      if (typeof num !== "number") {
+        throw new TypeError('Type Error')
+      }
+      let pre, n = 0;
+      if (num.toString().includes('.')) {
+        pre = num.toString().split('.')[0]
+      } else {
+        pre = num.toString()
+      }
+      let a = num.toString().split('')
+      for (let i = pre.length; i > 0; i--) {
+        n++;
+        if (!(n % 3)) {
+          a.splice(i - 1, 0, ',')
+        }
+      }
+      let r = a.join('').charAt(0)
+      return r === ',' ? a.join('').substr(1) : a.join('')
+    }
+    console.log(separate(1212312339.23)); // 1,212,312,339.23
+    console.log(separate(121231233923));  // 121,231,233,923
+  </script>
+</body>
+
+</html>

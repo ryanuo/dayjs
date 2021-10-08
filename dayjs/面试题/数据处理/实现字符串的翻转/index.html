@@ -1,0 +1,33 @@
+<!--
+ * @Description: 实现字符串的翻转
+ * @Author: Harry
+ * @Date: 2021-10-08 19:42:12
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 19:49:38
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现字符串的翻转</title>
+</head>
+
+<body>
+  <script>
+    String.prototype._reverse = function () {
+      let str = this, res = []
+      for (let i = 0; i <= this.length; i++) {
+        res[i] = this[this.length - i]
+      }
+      return res.join('')
+    }
+    console.log('asc'._reverse());
+  </script>
+</body>
+
+</html>

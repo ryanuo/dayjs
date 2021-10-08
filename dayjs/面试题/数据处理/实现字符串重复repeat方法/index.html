@@ -1,0 +1,38 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-08 19:24:55
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 19:41:13
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现字符串重复方法repaeat</title>
+</head>
+
+<body>
+  <script>
+    let str = 'abc'
+    console.log(str.repeat(2));
+    String.prototype._repeat = function () {
+      // let res = '', i = 0
+      // while (i < arguments[0]) {
+      //   res += this.toString()
+      //   i++;
+      // }
+      // return res
+      // 插空法
+      // return (new Array(arguments[0] + 1)).join(this.toString());
+    }
+    console.log(str._repeat(3));
+  </script>
+</body>
+
+</html>

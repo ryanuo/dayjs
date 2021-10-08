@@ -1,0 +1,38 @@
+<!--
+ * @Description: 实现数组的map方法
+ * @Author: Harry
+ * @Date: 2021-10-08 15:37:04
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-08 17:42:15
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现数组的map方法</title>
+</head>
+
+<body>
+  <script>
+      let arr = [1, 32, 41, 2, 1312, 41, 1, 321]
+      // map方法是返回原来的数组
+      Array.prototype._map = function (fn) {
+        if (typeof fn !== "function") {
+          throw new TypeError('Not Function')
+        }
+        let res = []
+        for (let i of this) {
+          fn(i) && res.push(fn(i))
+        }
+        return res
+      }
+      console.log(arr._map(x => x * 2));
+  </script>
+</body>
+
+</html>

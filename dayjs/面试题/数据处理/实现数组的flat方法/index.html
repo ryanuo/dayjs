@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现数组的flat方法</title>
+</head>
+
+<body>
+  <script>
+    // 使用递归的方法实现
+    let arr = [1, 3, 5, [24, 52], 2, [23, [3, [6], 7], 2]]
+    function _flat(arr, deepth) {
+      if (!Array.isArray(arr) || deepth <= 0) {
+        return arr
+      }
+      return arr.reduce((prev, cur) => {
+        if (typeof cur === "object") {
+          return prev.concat(_flat(cur, deepth - 1))
+        } else {
+          return prev.concat(cur)
+        }
+      }, [])
+    }
+    console.log(_flat(arr, 4));
+  </script>
+</body>
+
+</html>
