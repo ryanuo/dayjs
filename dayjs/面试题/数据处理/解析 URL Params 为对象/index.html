@@ -1,0 +1,48 @@
+<!--
+ * @Description: 解析 URL Params 为对象
+ * @Author: Harry
+ * @Date: 2021-10-09 21:19:45
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-09 21:57:47
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解析 URL Params 为对象</title>
+</head>
+
+<body>
+  <script>
+    let url = 'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled';
+    console.log(parseParam(url));
+    /* 结果
+     { user: 'anonymous',
+       id: [ 123, 456 ], // 重复出现的 key 要组装成数组，能被转成数字的就转成数字类型
+       city: '北京', // 中文需解码
+       enabled: true, // 未指定值得 key 约定为 true
+     }
+    */
+    function parseParam(url) {
+      let params = url.split('?')[1], op = params.split('&'), res = {}
+      for (let i of op) {
+        let item = i.split('='), a = item[0]
+        let b = !/^d+$/.test(item[i]) ? decodeURIComponent(item[1]) : parseFloat(item[1])
+        b = item.length !== 2 ? true : b
+        if (!res.hasOwnProperty(a)) {
+          res[a] = b
+        } else {
+          res[a] = [res[a], b]
+        }
+      }
+      return res
+    }
+  </script>
+</body>
+
+</html>

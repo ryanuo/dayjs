@@ -1,0 +1,49 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-09 17:08:51
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-09 17:11:07
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let source = [
+      {
+        id: 1,
+        pid: 0,
+        name: 'body'
+      }, {
+        id: 2,
+        pid: 1,
+        name: 'title'
+      }, {
+        id: 3,
+        pid: 2,
+        name: 'div'
+      }
+    ]
+    function etree(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        if (arr[i].pid == arr[i - 1].id) {
+          arr[i - 1]['children'] = arr.pop()
+        }
+      }
+      return arr
+    }
+    console.log(etree(source));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-09 16:30:41
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-09 16:41:22
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let args = {
+      0: 0,
+      1: 1,
+      2: 2,
+      3: 3,
+      length: 4
+    }
+    //  let res = Array.prototype.slice.call(args)
+    // let res = Array.from(args)
+    // let res = Array.prototype.splice.call(args, 0);
+    let res = Array.prototype.concat.apply([], args)
+    console.log(res);
+  </script>
+</body>
+
+</html>

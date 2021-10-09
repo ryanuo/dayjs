@@ -1,0 +1,81 @@
+<!--
+ * @Description: 实现 add(1)(2)(3)
+ * @Author: Harry
+ * @Date: 2021-10-09 07:32:07
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-09 09:48:38
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现 add(1)(2)(3)</title>
+</head>
+
+<body>
+  <script>
+    // // 简单版
+    // function add(a) {
+    //   return function (b) {
+    //     return function (c) {
+    //       return a + b + c;
+    //     }
+    //   }
+    // }
+    // console.log(add(1)(2)(3)); // 6
+    // var add = function (m) {
+    //   var temp = function (n) {
+    //     return add(m + n);
+    //   }
+    //   temp.toString = function () {
+    //     return m;
+    //   }
+    //   return temp;
+    // };
+    // console.log(add(3)(4)(5)); // 12
+    // console.log(add(3)(6)(9)(25)); // 43
+    function currying() {
+      let args = Array.prototype.slice(arguments)
+      let res = function () {
+        for (let i of arguments) { args.push(i) }
+        return res
+      }
+      res.toString = function () {
+        return args.reduce((a, b) => a + b)
+      }
+      return res
+    }
+    console.log(currying(1)(2,3)(3).toString());
+    // function add(...args) {
+    //   //求和
+    //   return args.reduce((a, b) => a + b)
+    // }
+    // function currying(fn) {
+    //   let args = []
+    //   return function temp(...newArgs) {
+    //     if (newArgs.length) {
+    //       args = [
+    //         ...args,
+    //         ...newArgs
+    //       ]
+    //       return temp
+    //     } else {
+    //       let val = fn.apply(this, args)
+    //       args = [] //保证再次调用时清空
+    //       return val
+    //     }
+    //   }
+    // }
+    // let addCurry = currying(add)
+    // console.log(addCurry(1)(2)(3)(4, 5)())  //15
+    // console.log(addCurry(1)(2)(3, 4, 5)())  //15
+    // console.log(addCurry(1)(2, 3, 4, 5)())  //15
+  </script>
+</body>
+
+</html>
