@@ -1,0 +1,42 @@
+<!--
+ * @Description: 
+ * @Author: Harry
+ * @Date: 2021-10-10 21:12:28
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-10 21:28:50
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排序算法</title>
+</head>
+
+<body>
+  <script>
+    let arr = [123, 23, 32, 3, 21, 3, 1, 5, 723, 2]
+    function selectedSort(arr) {
+      const len = arr.length
+      for (let i = 0; i < len - 1; i++) {
+        let minindex = i
+        for (let j = i + 1; j < len; j++) {
+          if (arr[minindex] > arr[j]) {
+            minindex = j
+          }
+        }
+        if (minindex !== i) {
+          [arr[minindex], arr[i]] = [arr[i], arr[minindex]]
+        }
+      }
+      console.log(arr);
+    }
+    selectedSort(arr)
+  </script>
+</body>
+
+</html>
