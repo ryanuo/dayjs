@@ -4,7 +4,7 @@
  * @Date: 2021-10-13 14:19:26
  * @Url: https://u.mr90.top
  * @github: https://github.com/rr210
- * @LastEditTime: 2021-10-13 20:46:46
+ * @LastEditTime: 2021-10-13 21:38:42
  * @LastEditors: Harry
 -->
 <!DOCTYPE html>
@@ -38,20 +38,27 @@
     //   return res
     // }
     // console.log(format(token, data));
-    // a
-    var F = function () { };
-    Object.prototype.a = function () {
-      console.log('a');
-    };
-    Function.prototype.b = function () {
-      console.log('b');
+    function SuperType() {
+      this.property = true;
     }
-    var f = new F();
-    f.a();
-    f.b();
-    F.a();
-    F.b()
-    new new Foo().getName(); // 
+
+    SuperType.prototype.getSuperValue = function () {
+      return this.property;
+    };
+
+    function SubType() {
+      this.subproperty = false;
+    }
+
+    SubType.prototype = new SuperType();
+    SubType.prototype.getSubValue = function () {
+      return this.subproperty;
+    };
+
+    var instance = new SubType();
+    console.log(instance.getSuperValue());
+
+
   </script>
 </body>
 
