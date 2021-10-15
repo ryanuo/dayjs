@@ -4,7 +4,7 @@
  * @Date: 2021-10-07 20:24:03
  * @Url: https://u.mr90.top
  * @github: https://github.com/rr210
- * @LastEditTime: 2021-10-08 08:04:39
+ * @LastEditTime: 2021-10-14 17:11:14
  * @LastEditors: Harry
 -->
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 <body>
   <script>
     // 第一种使用Set方法
-    let arr = [2, 2, 3, 4, 1, 23, 1, 32, 1, 1, 1, 3]
+    // let arr = [2, 2, 3, 4, 1, 23, 1, 32, 1, 1, 1, 3]
     // function deRepeat(arr) {
     //   return [...new Set(arr)]
     // }
@@ -48,18 +48,29 @@
     // }
     // 使用map存储不重复的数字
     // 实现思路：就是给map对象添加属性 使用hasOwnProperty 方法来判断 当前的map对象中是否 已存在某个属性 如果不存在 则将当前遍历的元素 push到一个行的数组中去
-    function deRepeat(arr) {
-      let map = {}
-      let res = []
-      for (let i of arr) {
-        if (!map.hasOwnProperty(i)) {
-          map[i] = 1
-          res.push(i)
+    // function deRepeat(arr) {
+    //   let map = {}
+    //   let res = []
+    //   for (let i of arr) {
+    //     if (!map.hasOwnProperty(i)) {
+    //       map[i] = 1
+    //       res.push(i)
+    //     }
+    //   }
+    //   return res
+    // }
+    let arr = [2, 2, 3, 4, 1, 23, 1, 32, 1, 1, 1, 3]
+    // 使用splice实现数组的去重
+    Array.prototype._derepeat = function () {
+      let arr = this
+      for (let m = 0; m < arr.length; m++) {
+        for (let n = m + 1; n < arr.length; n++) {
+          if (arr[m] === arr[n]) arr.splice(n, 1)
         }
       }
-      return res
+      return arr
     }
-    console.log(deRepeat(arr));
+    console.log(arr._derepeat()); // [2, 3, 4, 1, 23, 32, 1]
   </script>
 </body>
 

@@ -1,0 +1,50 @@
+<!--
+ * @Description: 手写实现一个promise
+ * @Author: Harry
+ * @Date: 2021-10-15 11:20:16
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-15 16:37:41
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写实现一个promise</title>
+</head>
+
+<body>
+  <script src="index.js"></script>
+  <script>
+    let hd = new Hd((reslove, reject) => {
+      // setTimeout(() => {
+      reslove("解决")
+      // reject("错误")
+      console.log('你好');
+      // })
+    })
+      .then('')
+      .then(value => {
+        // console.log(adw);
+        console.log(value);
+        return "1"
+      })
+      .then(value => {
+        // console.log(ada);
+        console.log(value);
+        return ''
+      }, reason => {
+        console.log("Error:" + reason);
+      })
+    // .catch(res => {
+    //   console.log(res);
+    // })
+    // console.log('同步任务');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!--
+ * @Description: Tab使用继承实现 模块的显示和隐藏 以及类型变换
+ * @Author: Harry
+ * @Date: 2021-10-15 09:53:14
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-15 11:03:20
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承实现状态的改变</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  a,span {
+    text-decoration: none;
+    color: #fff;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  body {
+    background-color: #ccc;
+  }
+
+  main {
+    display: inline-block;
+    width: 40%;
+    margin: 20px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main nav a:nth-child(1) {
+    background-color: orange;
+  }
+
+  main nav a:nth-child(2) {
+    background-color: #888;
+  }
+
+  section {
+    width: 100%;
+    height: 200px;
+    font-size: 40px;
+    font-weight: 500;
+    color: #000;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px #999;
+  }
+
+  section {
+    margin: 20px 0;
+    background-color: rgb(228, 238, 83);
+  }
+
+  section+section {
+    display: none;
+    background-color: rgb(20, 172, 28);
+  }
+</style>
+
+<body>
+  <main class="tab1">
+    <nav>
+      <span href="javascript:;">点击按钮1</span>
+      <span href="javascript:;">点击按钮2</span>
+    </nav>
+    <section>1</section>
+    <section>2</section>
+  </main>
+  <main class="tab2">
+    <nav>
+      <a href="javascript:;">点击按钮1</a>
+      <a href="javascript:;">点击按钮2</a>
+    </nav>
+    <section>1</section>
+    <section>2</section>
+  </main>
+</body>
+<script>
+  // 使用继承实现类型的转化
+  // 先写一个继承的方法
+  function _extend(sub, sup) {
+    sub.prototype = Object.create(sup.prototype)
+    Object.defineProperty(sub, 'constructor', {
+      value: sub,
+      enumerable: false
+    })
+  }
+  // 定义一个变换的函数
+  function Animation() { }
+  // 实现元素的显示和隐藏
+  Animation.prototype.show = function () {
+    this.style.display = 'block'
+  }
+  Animation.prototype.hide = function () {
+    this.style.display = 'none'
+  }
+  // 实现元素背景的替换
+  Animation.prototype.backgroundColor = function (color) {
+    this.style.backgroundColor = color
+  }
+  _extend(Tab, Animation)
+  function Tab(params) {
+    let args = Object.assign({ el: null, section: 'section', link: 'a', callback: null }, params)
+    this.tab = document.querySelector(args['el'])
+    this.links = this.tab.querySelectorAll(args['link'])
+    this.sections = this.tab.querySelectorAll(args['section'])
+    this.callback = args['callback']
+  }
+  // 当实例创建之后需要开始启动 并且获取
+  Tab.prototype.run = function (i) {
+    this.reset()
+    this.action(i)
+    this.bindEvent()
+  }
+  // 绑定一个事件
+  Tab.prototype.bindEvent = function () {
+    this.links.forEach((el, i) => {
+      el.addEventListener('click', () => {
+        // 调用action函数之前先进行重置
+        this.reset()
+        this.action(i)
+        if (this.callback) this.callback()
+      })
+    });
+  }
+  Tab.prototype.reset = function () {
+    this.links.forEach((el, i) => {
+      this.backgroundColor.call(el, '#888')
+      this.hide.call(this.sections[i])
+    })
+  }
+  // 绑定一个事件执行函数
+  Tab.prototype.action = function (i) {
+    this.backgroundColor.call(this.links[i], '#ffa500')
+    this.show.call(this.sections[i])
+  }
+  new Tab({ el: ".tab1", link: 'span', callback: () => { console.log('测试回调') } }).run(0)
+  new Tab({ el: ".tab2", callback: () => { console.log('测试回调') }, link: "a" }).run(1)
+
+</script>
+
+
+</html>

@@ -1,0 +1,113 @@
+<!--
+ * @Description: 多个继承的使用
+ * @Author: Harry
+ * @Date: 2021-10-15 08:30:58
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-15 09:44:37
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多个继承出现的问题</title>
+</head>
+
+<body>
+  <script>
+    // 实现一个继承使用Object.create的方法,使用mixin方法解决
+    function _extend(sub, parent) {
+      sub.prototype = Object.create(parent.prototype)
+      Object.defineProperty(sub, 'contructor', {
+        value: sub,
+        enumerable: false
+      })
+    }
+    // 获取身份的信息
+    const credit = {
+      _credit() { console.log('获取信息卡信息') }
+    }
+    // 获取回复
+    const request = {
+      ajax() { return '获取数据' }
+    }
+    // 获取地址
+    // 获取地址信息
+    const address = {
+      // 使用super方法代替 this.__proto__ super关键字表示当前类的原型
+      __proto__: request,
+      // getaddress() { console.log(this.__proto__.ajax() + '，获取地址'); }
+      getaddress() { console.log(super.ajax() + '，获取地址'); }
+    }
+    console.dir(address);
+    function User(name, age) {
+      this.name = name
+      this.age = age
+    }
+    User.prototype.show = function () {
+      console.log(this.name, this.age);
+    }
+    function Admin(name, age) {
+      User.call(this, name, age)
+    }
+    _extend(Admin, User)
+    Admin.prototype = Object.assign(Admin.prototype, request, address, credit)
+    let hd = new Admin('ls', 20)
+    console.dir(hd);
+    hd.show()
+    hd.ajax()
+    hd.getaddress()
+    hd._credit()
+    // // 实现一个继承使用Object.create的方法
+    // function _extend(sub, parent) {
+    //   sub.prototype = Object.create(parent.prototype)
+    //   Object.defineProperty(sub, 'contructor', {
+    //     value: sub,
+    //     enumerable: false
+    //   })
+    // }
+    // // 获取身份的信息
+    // function Credit() { }
+    // Credit.prototype._credit = function () {
+    //   console.log('获取信息卡信息');
+    // }
+    // _extend(Address, Credit)
+    // // 获取地址信息
+    // function Address() { }
+    // Address.prototype.ajax = function () {
+    //   console.log('获取地址');
+    // }
+    // _extend(Request, Address)
+    // // 获取回复
+    // function Request() { }
+    // Request.prototype.view = function () {
+    //   console.log('用户回复');
+    // }
+    // _extend(User, Request)
+    // // 获取地址
+    // function User(name, age) {
+    //   this.name = name
+    //   this.age = age
+    // }
+    // User.prototype.show = function () {
+    //   console.log(this.name, this.age);
+    // }
+    // function Admin(name, age) {
+    //   User.call(this, name, age)
+    // }
+    // _extend(Admin, User)
+    // let hd = new Admin('ls', 20)
+    // console.dir(hd);
+    // hd.show()
+    // hd.view()
+    // hd.ajax()
+    // hd._credit()
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!--
+ * @Description: 原型链的使用
+ * @Author: Harry
+ * @Date: 2021-10-15 08:12:37
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-15 08:24:30
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型链的使用</title>
+</head>
+
+<body>
+  <script>
+    // 使用Object实现对象的继承,通过工程函数实现函数对象的继承
+    function User(name, age) {
+      this.name = name
+      this.age = age
+    }
+    User.prototype.show = function () {
+      console.log(this.name, this.age);
+    }
+
+    // 创建一个空的对象 将原型指向到构造函数的原型上
+    function admin(...args) {
+      // let fn = Object.create(User.prototype)
+      let fn = {}
+      fn.__proto__ = User.prototype
+      User.call(fn, ...args)
+      return fn
+    }
+    let obj = admin('ls', 20)
+    obj.show()
+
+  </script>
+</body>
+
+</html>

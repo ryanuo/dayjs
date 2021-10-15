@@ -4,7 +4,7 @@
  * @Date: 2021-10-06 15:54:29
  * @Url: https://u.mr90.top
  * @github: https://github.com/rr210
- * @LastEditTime: 2021-10-06 19:41:21
+ * @LastEditTime: 2021-10-14 16:39:35
  * @LastEditors: Harry
 -->
 <!DOCTYPE html>
@@ -39,9 +39,9 @@
     // let arr = [1, 2, 3, 4];
     // console.log(arr.slice()); // [1,2,3,4]
     // console.log(arr.slice() === arr); //false
-    // let arr = [1, 2, 3, [2], 4];
-    // console.log(arr.concat()); // [1,2,3,4]
-    // console.log(arr.concat() === arr); //false
+    let arr = [1, 2, 3, [2], 4];
+    console.log(arr.concat()); // [1,2,3,4]
+    console.log(arr.concat() === arr); //false
     // 手写一个浅拷贝
     function shallowCopy(obj) {
       if (!obj || typeof obj !== "object") return;
