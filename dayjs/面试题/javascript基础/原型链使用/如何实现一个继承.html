@@ -1,0 +1,126 @@
+<!--
+ * @Description: 如何实现一个继承
+ * @Author: Harry
+ * @Date: 2021-10-15 16:44:11
+ * @Url: https://u.mr90.top
+ * @github: https://github.com/rr210
+ * @LastEditTime: 2021-10-15 22:10:20
+ * @LastEditors: Harry
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如何实现一个继承</title>
+</head>
+
+<body>
+  <script>
+    // // 原型链继承
+    // function Person() {
+    //   this.name = 'zs'
+    //   this.age = 20
+    // }
+    // Person.prototype.getName = function () {
+    //   return this.age
+    // }
+    // function Child() { }
+    // Child.prototype = new Person()
+    // let hd = new Child()
+    // console.dir(hd.getName());
+    // 借用构造函数实现
+    // function Person() {
+    //   this.name = 'zs'
+    //   this.age = 20
+    // }
+    // function Child() {
+    //   Person.call(this)
+    // }
+    // let hd = new Child()
+    // console.dir(hd);
+    // 如何实现一个继承使用组合式的继承实现，是javascript中常见的继承实现方法
+    // 缺点就是在执行继承的时候 掉以了两次父类的构造函数
+    // function Parent(name) {
+    //   this.name = name;
+    //   this.colors = ['red', 'blue', 'green'];
+    // }
+    // Parent.prototype.getName = function () {
+    //   console.log(this.colors);
+    //   return this.name
+    // }
+
+    // function Child(name, age) {
+    //   Parent.call(this, name);// 第二次调用 Parent()
+    //   this.age = age;
+    // }
+
+    // Child.prototype = new Parent(); // 第一次调用 Parent(
+    // // 第一种使用Object.create的方法
+    // let hd = new Child("zs", 20)
+    // console.log(hd.getName());
+    // 原型式继承 使用Object.create方法重新创建一个对象实现 
+    // 包含引用类型的属性值始终都会共享相应的值， 这点跟原型链继承一样
+    // function objectCreate(obj) {
+    //   function fn() { }
+    //   fn.prototype = obj
+    //   return new fn()
+    // }
+    // let person = {
+    //   name: 'zs', age: 20
+    // }
+    // let hd = objectCreate(person) // 手写实现Object.create
+    // let ob = Object.create(person) // es6出现的
+    // console.log(hd.name);
+    // console.log(ob.name);
+    // function createObj(obj) {
+    //   let newobj = Object.create(obj)
+    //   newobj.view = function () {
+    //     this.name = 'zs'
+    //     this.age = 20
+    //     return this.name
+    //   }
+    //   return newobj
+    // }
+    // let o = {
+    //   name: 'ls', age: 21
+    // }
+    // let hd = createObj(o)
+    // console.dir(hd.view());
+    // 实现一个继承的方法 extend
+    function _extend(child, parent) {
+      child.prototype = Object.create(parent.prototype)
+      Object.defineProperty(child, 'constructor', {
+        value: child,
+        enumerable: false
+      })
+    }
+    function User() {
+      this.name = 'user'
+      this.view = function () {
+        return this.name
+      }
+    }
+    function Admin() {
+      this.name = 'admin'
+      this.view = function () {
+        // this.name = 'admin'
+        return this.name
+      }
+    }
+    Admin.prototype.getAdmin = function () {
+      this.age = 21
+      this.name = 'admin'
+      return this.age
+    }
+    _extend(User, Admin)
+    let dh = new User()
+    console.dir(dh.getAdmin()); // 21
+    console.dir(dh.name); // admin
+    console.dir(dh); // User
+  </script>
+</body>
+
+</html>
